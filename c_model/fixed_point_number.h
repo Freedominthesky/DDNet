@@ -10,20 +10,20 @@ using std::endl;
 
 struct FixedPointNum
 {
-	FixedPointNum();
+    FixedPointNum();
     FixedPointNum(uint16_t number);
-	FixedPointNum(uint16_t number, uint16_t integer_width, uint16_t fraction_width);
-	~FixedPointNum(){};
+    FixedPointNum(uint16_t number, uint16_t integer_width, uint16_t fraction_width);
+    ~FixedPointNum(){};
 
-	/*
-	 *helper function used to test.
-	 */
-	double to_double();
+    /*
+     *helper function used to test.
+     */
+    double to_double();
 
-	uint16_t number;
-	uint16_t sign;
+    uint16_t number;
+    uint16_t sign;
     uint16_t fraction_width;
-	uint16_t integer_width;
+    uint16_t integer_width;
 };
 
 FixedPointNum operator+(const FixedPointNum &number_1, const FixedPointNum &number_2);
