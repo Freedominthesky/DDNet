@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BIN	Makefile	/^BIN=ddnet$/;"	m
+CC	Makefile	/^CC=g++$/;"	m
+DATATYPE	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	g
+DDNet	ddnet.cpp	/^DDNet::DDNet()$/;"	f	class:DDNet
+DDNet	ddnet.cpp	/^DDNet::DDNet(int picture_data_size, int inner_size, int out_size)$/;"	f	class:DDNet
+DDNet	ddnet.h	/^class DDNet$/;"	c
+FLAGS	Makefile	/^FLAGS=-O2 -std=c++11$/;"	m
+FixedPointNum	fixed_point_number.cpp	/^FixedPointNum::FixedPointNum()$/;"	f	class:FixedPointNum
+FixedPointNum	fixed_point_number.cpp	/^FixedPointNum::FixedPointNum(uint16_t in_number)$/;"	f	class:FixedPointNum
+FixedPointNum	fixed_point_number.cpp	/^FixedPointNum::FixedPointNum(uint16_t in_number, uint16_t in_integer_width, uint16_t in_fraction_width)$/;"	f	class:FixedPointNum
+FixedPointNum	fixed_point_number.h	/^struct FixedPointNum$/;"	s
+OCEAN_DDNET_H	ddnet.h	2;"	d
+OCEAN_FIXED_POINT_NUMBER	fixed_point_number.h	2;"	d
+PICTURE	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	e	enum:DATATYPE
+SRC	Makefile	/^SRC=ddnet.cpp fixed_point_number.cpp main.cpp$/;"	m
+WEIGHT_1	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	e	enum:DATATYPE
+WEIGHT_2	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	e	enum:DATATYPE
+WEIGHT_3	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	e	enum:DATATYPE
+WEIGHT_4	ddnet.h	/^enum DATATYPE {PICTURE = 0, WEIGHT_1, WEIGHT_2, WEIGHT_3, WEIGHT_4};$/;"	e	enum:DATATYPE
+_final_layer_out	ddnet.h	/^		FixedPointNum *_final_layer_out;$/;"	m	class:DDNet
+_final_layer_out_size	ddnet.h	/^		int           _final_layer_out_size;$/;"	m	class:DDNet
+_first_layer_out	ddnet.h	/^		FixedPointNum *_first_layer_out;$/;"	m	class:DDNet
+_inner_size	ddnet.h	/^        int           _inner_size;$/;"	m	class:DDNet
+_picture_data	ddnet.h	/^		FixedPointNum *_picture_data;$/;"	m	class:DDNet
+_picture_data_size	ddnet.h	/^		int           _picture_data_size;$/;"	m	class:DDNet
+_second_layer_inner	ddnet.h	/^		FixedPointNum *_second_layer_inner;$/;"	m	class:DDNet
+_second_layer_out	ddnet.h	/^		FixedPointNum *_second_layer_out;$/;"	m	class:DDNet
+_third_layer_inner	ddnet.h	/^		FixedPointNum *_third_layer_inner;$/;"	m	class:DDNet
+_third_layer_out	ddnet.h	/^		FixedPointNum *_third_layer_out;$/;"	m	class:DDNet
+_weight_data_1	ddnet.h	/^		FixedPointNum *_weight_data_1;$/;"	m	class:DDNet
+_weight_data_2	ddnet.h	/^		FixedPointNum *_weight_data_2;$/;"	m	class:DDNet
+_weight_data_3	ddnet.h	/^		FixedPointNum *_weight_data_3;$/;"	m	class:DDNet
+_weight_data_4	ddnet.h	/^		FixedPointNum *_weight_data_4;$/;"	m	class:DDNet
+char_seq_size	main.cpp	/^int char_seq_size(const char *char_seq)$/;"	f
+forward	ddnet.cpp	/^void DDNet::forward()$/;"	f	class:DDNet
+forward_dd_layer	ddnet.cpp	/^FixedPointNum* DDNet::forward_dd_layer(const FixedPointNum *data_vec,$/;"	f	class:DDNet
+forward_fc_layer	ddnet.cpp	/^FixedPointNum* DDNet::forward_fc_layer(const FixedPointNum *data_vec,$/;"	f	class:DDNet
+fraction_width	fixed_point_number.h	/^    uint16_t fraction_width;$/;"	m	struct:FixedPointNum
+get_predict_result	ddnet.cpp	/^int DDNet::get_predict_result()$/;"	f	class:DDNet
+init	ddnet.cpp	/^void DDNet::init()$/;"	f	class:DDNet
+integer_width	fixed_point_number.h	/^	uint16_t integer_width;$/;"	m	struct:FixedPointNum
+invalid_option	main.cpp	/^void invalid_option()$/;"	f
+line2fix	ddnet.cpp	/^FixedPointNum line2fix(const string &line)$/;"	f
+main	main.cpp	/^int main(int argc, char **argv)$/;"	f
+main	test.cpp	/^int main(int argc, char **argv)$/;"	f
+number	fixed_point_number.h	/^	uint16_t number;$/;"	m	struct:FixedPointNum
+operator *	fixed_point_number.cpp	/^FixedPointNum operator*(const FixedPointNum &number_1, const FixedPointNum &number_2)$/;"	f
+operator +	fixed_point_number.cpp	/^FixedPointNum operator+(const FixedPointNum &number_1, const FixedPointNum &number_2)$/;"	f
+operator <<	fixed_point_number.cpp	/^ostream& operator<<(ostream&os, const FixedPointNum &fixed_num)$/;"	f
+operator >	fixed_point_number.cpp	/^bool operator>(const FixedPointNum &number_1, const FixedPointNum &number_2)$/;"	f
+parse_file	ddnet.cpp	/^void DDNet::parse_file(string file_name, DATATYPE data_type)$/;"	f	class:DDNet
+print_vector	ddnet.cpp	/^void print_vector(const FixedPointNum *data_vec, int data_size, string vec_name)$/;"	f
+sign	fixed_point_number.h	/^	uint16_t sign;$/;"	m	struct:FixedPointNum
+test_class_fixed_point	test.cpp	/^void test_class_fixed_point()$/;"	f
+to_double	fixed_point_number.cpp	/^double FixedPointNum::to_double()$/;"	f	class:FixedPointNum
+view_all	ddnet.cpp	/^void DDNet::view_all()$/;"	f	class:DDNet
+view_layer	ddnet.cpp	/^void DDNet::view_layer(int layer_id)$/;"	f	class:DDNet
+~DDNet	ddnet.cpp	/^DDNet::~DDNet()$/;"	f	class:DDNet
+~FixedPointNum	fixed_point_number.h	/^	~FixedPointNum(){};$/;"	f	struct:FixedPointNum
