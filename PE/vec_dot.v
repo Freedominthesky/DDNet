@@ -39,7 +39,7 @@ module vec_dot(clk, rst, vec_a, vec_b, dot_out, finish);
     reg [4:0] index;
     reg ready;
     
-    //1,4,11定点小数
+    //1,4,11露篓碌茫脨隆脢媒
     reg signed [15:0]  n = 16'h0800;
     /*
     always@(*)
@@ -126,7 +126,7 @@ module vec_dot(clk, rst, vec_a, vec_b, dot_out, finish);
                 begin
                     dot_out_tmp = vec_a_tmp[i] * vec_b_tmp[i];
                     //dot_out <= dot_out + vec_a_tmp[i] * vec_b_tmp[i] / n;
-                    dot_out = dot_out + dot_out_tmp / 16'h0800;
+                    dot_out = dot_out + (dot_out_tmp >> 4'hb);
                     i <= i + 1'b1;
                 end
             end
