@@ -106,21 +106,13 @@ finish);
             Matrix_sel_tmp<=256'd0;
             
             cnt<=4'd0;
-        end else 
-        begin
-                {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
-                Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
-                Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
-                
-
-            if (en)
-            begin
-//                {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
-//                Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
-//                Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
-                
-                
-                case(cnt)
+        end 
+        else begin
+            {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
+            Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
+            Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
+            
+            case(cnt)
                 0:begin
                     Matrix_sel_tmp<=Matrix_col_tmp_0;
                     finish_tmp<=1'b0;
@@ -171,20 +163,28 @@ finish);
                 15:begin
                     Matrix_sel_tmp<=Matrix_col_tmp_15;           
                 end
-                endcase  
-                
-                if (ready)
-                begin
-                    if (cnt==4'd15)  
-                    begin            
-                    cnt<=4'd0;
-                    finish_tmp<=1'b1;   
-                    end else         
-                    begin            
-                    cnt<=cnt+4'd1;   
-                    end     
-              end
-                
+            endcase    
+
+//            if (en)
+//            begin
+////                {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
+////                Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
+////                Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;             
+           
+//                if (ready)
+//                begin
+//                    if (cnt==4'd15)  
+//                    begin            
+////                    cnt<=4'd0;
+////                    finish_tmp<=1'b1; 
+//                    cnt=4'd0;
+//                    finish_tmp=1'b1;    
+//                    end else         
+//                    begin            
+//                    cnt=cnt+4'd1;   
+//                    end     
+//                end
+//            end                
 //            end else
 //            begin
 ////                Matrix_col_tmp_0<=256'd0;
@@ -206,8 +206,31 @@ finish);
                 
                
 //                cnt<=4'd1;
-            end
+
                                
+        end
+    end
+    
+    always @(posedge clk)
+    begin
+        if(!rst)
+        begin
+            if (en)
+            begin
+                if (ready)
+                begin
+                    if (cnt==4'd15)  
+                    begin            
+//                    cnt<=4'd0;
+//                    finish_tmp<=1'b1; 
+                    cnt=4'd0;
+                    finish_tmp=1'b1;    
+                    end 
+                    else begin            
+                    cnt=cnt+4'd1;   
+                    end     
+                end
+            end   
         end
     end
     
