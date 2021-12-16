@@ -20,13 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module matrix_vector_sel(clk,rst,Matrix,Matrix_sel,
+module matrix_vector_sel(clk,rst,en,ready,Matrix,Matrix_sel,//clean_dot,
 //Matrix_col_0,Matrix_col_1,Matrix_col_2,Matrix_col_3,Matrix_col_4,Matrix_col_5,
 //Matrix_col_6,Matrix_col_7,Matrix_col_8,Matrix_col_9,Matrix_col_10,Matrix_col_11,Matrix_col_12,Matrix_col_13,Matrix_col_14,
 //Matrix_col_15,
 finish);
     input clk;
     input rst;
+    input en;
+    input ready;//to change the row
     input signed [4095:0] Matrix;//the data is column-wise stored when impementing matrix mux and row-wise stored when implementing dot
     
 //    output signed [255:0] Matrix_col_0;
@@ -47,6 +49,7 @@ finish);
 //    output signed [255:0] Matrix_col_15;
     
     output signed [255:0] Matrix_sel;
+//    output clean_dot;
     output finish;
     
     reg signed [255:0] Matrix_col_tmp_0;
@@ -68,12 +71,15 @@ finish);
     
     reg signed [255:0] Matrix_sel_tmp;
     integer finish_tmp;
+ //   integer clean_dot_tmp;
     reg [3:0] cnt;//ctrl the row select  
     
     initial 
     begin
         finish_tmp=1'b0;
+  //      clean_dot_tmp=1'b0;
         cnt=4'd0;
+        Matrix_sel_tmp=256'd0;
     end
     
     always@(posedge clk)
@@ -102,73 +108,106 @@ finish);
             cnt<=4'd0;
         end else 
         begin
-            {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
-            Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
-            Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
-            
-            
-            case(cnt)
-            0:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_0;
-                finish_tmp<=1'b0;
+                {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
+                Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
+                Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
+                
+
+            if (en)
+            begin
+//                {Matrix_col_tmp_0,Matrix_col_tmp_1,Matrix_col_tmp_2,Matrix_col_tmp_3,Matrix_col_tmp_4,Matrix_col_tmp_5,
+//                Matrix_col_tmp_6,Matrix_col_tmp_7,Matrix_col_tmp_8,Matrix_col_tmp_9,
+//                Matrix_col_tmp_10,Matrix_col_tmp_11,Matrix_col_tmp_12,Matrix_col_tmp_13,Matrix_col_tmp_14,Matrix_col_tmp_15} = Matrix;
+                
+                
+                case(cnt)
+                0:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_0;
+                    finish_tmp<=1'b0;
+                    
+                end
+                1:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_1;           
+                end
+                2:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_2;
+                end
+                3:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_3;
+                end
+                4:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_4;
+                end
+                5:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_5;           
+                end
+                6:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_6;
+                end
+                7:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_7;
+                end
+                8:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_8;
+                end
+                9:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_9;           
+                end
+                10:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_10;
+                end
+                11:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_11;           
+                end
+                12:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_12;
+                end
+                13:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_13;
+                end
+                14:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_14;
+                end
+                15:begin
+                    Matrix_sel_tmp<=Matrix_col_tmp_15;           
+                end
+                endcase  
+                
+                if (ready)
+                begin
+                    if (cnt==4'd15)  
+                    begin            
+                    cnt<=4'd0;
+                    finish_tmp<=1'b1;   
+                    end else         
+                    begin            
+                    cnt<=cnt+4'd1;   
+                    end     
+              end
+                
+//            end else
+//            begin
+////                Matrix_col_tmp_0<=256'd0;
+////                Matrix_col_tmp_1<=256'd0;
+////                Matrix_col_tmp_2<=256'd0;
+////                Matrix_col_tmp_3<=256'd0;
+////                Matrix_col_tmp_4<=256'd0;
+////                Matrix_col_tmp_5<=256'd0;
+////                Matrix_col_tmp_6<=256'd0;
+////                Matrix_col_tmp_7<=256'd0;
+////                Matrix_col_tmp_8<=256'd0;
+////                Matrix_col_tmp_9<=256'd0;
+////                Matrix_col_tmp_10<=256'd0;
+////                Matrix_col_tmp_11<=256'd0;
+////                Matrix_col_tmp_12<=256'd0;
+////                Matrix_col_tmp_13<=256'd0;
+////                Matrix_col_tmp_14<=256'd0;
+////                Matrix_col_tmp_15<=256'd0;
+                
+               
+//                cnt<=4'd1;
             end
-            1:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_1;           
-            end
-            2:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_2;
-            end
-            3:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_3;
-            end
-            4:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_4;
-            end
-            5:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_5;           
-            end
-            6:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_6;
-            end
-            7:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_7;
-            end
-            8:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_8;
-            end
-            9:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_9;           
-            end
-            10:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_10;
-            end
-            11:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_11;           
-            end
-            12:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_12;
-            end
-            13:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_13;
-            end
-            14:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_14;
-            end
-            15:begin
-                Matrix_sel_tmp<=Matrix_col_tmp_15;           
-            end
-            endcase  
-            
-            if (cnt==4'd15)  
-            begin            
-            cnt<=4'd0;
-            finish_tmp<=1'b1;   
-            end else         
-            begin            
-            cnt<=cnt+1;   
-            end     
-            
-                           
+                               
         end
     end
     
@@ -204,5 +243,6 @@ finish);
     
     assign Matrix_sel=Matrix_sel_tmp;
     assign finish=finish_tmp;
+//    assign clean_dot=clean_dot_tmp;
 endmodule
 
