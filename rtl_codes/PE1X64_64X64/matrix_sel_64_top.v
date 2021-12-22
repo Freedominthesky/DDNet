@@ -72,9 +72,9 @@ module matrix_sel_64_top (input clk,
     .rst(rst),
     .Matrix(Matrix_c_0),
     .PE16_0(PE16_tmp_0),
-    .PE16_1(PE16_tmp_1),
-    .PE16_2(PE16_tmp_2),
-    .PE16_3(PE16_tmp_3),
+    .PE16_1(PE16_tmp_4),
+    .PE16_2(PE16_tmp_8),
+    .PE16_3(PE16_tmp_12),
     .finish(finish_sel_row_c0)
     );
     
@@ -83,10 +83,10 @@ module matrix_sel_64_top (input clk,
     .en(finish_sel_col_64_tmp),
     .rst(rst),
     .Matrix(Matrix_c_1),
-    .PE16_0(PE16_tmp_4),
+    .PE16_0(PE16_tmp_1),
     .PE16_1(PE16_tmp_5),
-    .PE16_2(PE16_tmp_6),
-    .PE16_3(PE16_tmp_7),
+    .PE16_2(PE16_tmp_9),
+    .PE16_3(PE16_tmp_13),
     .finish(finish_sel_row_c1)
     );
     
@@ -95,10 +95,10 @@ module matrix_sel_64_top (input clk,
     .en(finish_sel_col_64_tmp),
     .rst(rst),
     .Matrix(Matrix_c_2),
-    .PE16_0(PE16_tmp_8),
-    .PE16_1(PE16_tmp_9),
+    .PE16_0(PE16_tmp_2),
+    .PE16_1(PE16_tmp_6),
     .PE16_2(PE16_tmp_10),
-    .PE16_3(PE16_tmp_11),
+    .PE16_3(PE16_tmp_14),
     .finish(finish_sel_row_c2)
     );
     
@@ -107,9 +107,9 @@ module matrix_sel_64_top (input clk,
     .en(finish_sel_col_64_tmp),
     .rst(rst),
     .Matrix(Matrix_c_3),
-    .PE16_0(PE16_tmp_12),
-    .PE16_1(PE16_tmp_13),
-    .PE16_2(PE16_tmp_14),
+    .PE16_0(PE16_tmp_3),
+    .PE16_1(PE16_tmp_7),
+    .PE16_2(PE16_tmp_11),
     .PE16_3(PE16_tmp_15),
     .finish(finish_sel_row_c3)
     );

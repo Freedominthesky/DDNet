@@ -3,7 +3,7 @@
 module matrix_sel_64_row (input clk,
                           input rst,
                           input en,
-                          input signed [16383:0] Matrix,     //64x16 Matrix
+                          input signed [16383:0] Matrix,     //16x64 Matrix
                           output reg signed [4095:0] PE16_0,
                           output reg signed [4095:0] PE16_1, //16x16 Matrix
                           output reg signed [4095:0] PE16_2,
